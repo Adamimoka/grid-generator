@@ -3,15 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Grid Generator</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <script src="gridTypes/squareGrid.js"></script>
   </head>
-  <body style="padding: 25px;">
-      <h1>Grid Generator</h1>
-      <p>Click generate to generate grid (whole thing is a WIP)</p>
-      <button type="button" onclick="GenerateGrid();">Generate</button>
-      <p id="confirm-text"></p>
-      <div id="image-container"></div>
-    </body>
+  <body>
+    <h1>Grid Generator</h1>
+    <p>Generate (whole thing is a WIP)</p>
+    <select id="grid-type-selector" onchange="ChangeGridType();">
+      <option value="" selected disabled hidden>Choose grid type</option>
+      <option value="0">Square Grid</option>
+      <!-- <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      <option value="4">Four</option> -->
+    </select>
+    <br>
+    <div id="image-settings">
+      <div id="square-grid-settings" hidden>
+        <!-- Add settings for square grid -->
+      </div>
+      <div id="other-grid-settings" hidden>
+        <!-- Add settings for other grids -->
+      </div>
+    </div>
+    <button id="generate-button" type="button" onclick="GenerateGrid();" hidden>Generate</button>
+    <p id="confirm-text">confirm text</p>
+    <div id="image-container"></div>
+  </body>
 </html>
