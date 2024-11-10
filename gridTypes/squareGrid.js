@@ -1,32 +1,42 @@
 function SquareGrid() {
-    document.getElementById("confirm-text").innerHTML = "Generated!";
+    const image_width = document.getElementById("square-image-width").value;
+    const image_height = document.getElementById("square-image-height").value;
+    const tile_width = document.getElementById("square-tile-width").value;
+    const tile_height = document.getElementById("square-tile-height").value;
+    const background_color = document.getElementById("square-background-color").value;
+    const tile_color = document.getElementById("square-tile-color").value;
 
-    // Step 1: Create a canvas element
+    // Check and validate that all 6 values are not empty
+    if (image_width == "" || image_height == "" || tile_width == "" || tile_height == "" || background_color == "" || tile_color == "") {
+        return;
+    }
+
     const canvas = document.createElement("canvas");
-    canvas.width = 1200;  // Set desired width
-    canvas.height = 600; // Set desired height
-
-    // Step 2: Get the drawing context of the canvas
+    canvas.width = image_width;
+    canvas.height = image_height;
     const context = canvas.getContext("2d");
 
-    // Step 3: Fill backgroud
-    context.fillStyle = "#000000";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = background_color;
+    context.fillRect(0, 0, image_width, image_height);
 
-    // Step 4: Set the fill color and draw a rectangle to fill the canvas
-    context.fillStyle = "#ff5733";  // Set your desired color (e.g., orange)
-    for (let x = 0; x < 5; x++) {
-        for (let y = 0; y < 5; y++) {
-            context.fillRect(x*100, y*100, 25, 25);
+    context.fillStyle = tile_color;
+    let isTileFilled = true;
+    for (let y = 0; y < image_height/tile_height; y++) {
+        for (let x = 0; x < image_width/tile_width; x++) {
+            if (isTileFilled) {
+                context.fillRect(x*tile_width, y*tile_height, tile_width, tile_height);
+            }
+            isTileFilled = !isTileFilled;
+        }
+        if (Math.ceil(image_width/tile_width) % 2 == 0) {
+            isTileFilled = !isTileFilled;
         }
     }
 
-    // Step 5: Convert the canvas to a data URL and create an image element
     const image = document.createElement("img");
-    image.src = canvas.toDataURL("image/png");  // Convert canvas to an image source
+    image.src = canvas.toDataURL("image/png");
 
-    // Step 6: Append the image to the container
     const container = document.getElementById("image-container");
-    container.innerHTML = "";  // Clear existing content
+    container.innerHTML = "";  // Clear existing image
     container.appendChild(image);  // Add the new image
 }

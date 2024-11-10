@@ -1,24 +1,37 @@
 function ChangeGridType() {
     const gridType = +document.getElementById("grid-type-selector").value;
-    alert(gridType)
 
-    let settingsDivs = [
+    let settingsDivs = [ // Include all grid types here, based on the IDs of the divs in html
         document.getElementById("square-grid-settings"),
         document.getElementById("other-grid-settings")
     ];
-    for (let index = 0; index < settingsDivs.length; index++) {
-        const settingsDiv = settingsDivs[index];
-        settingsDiv.style.visibility = "hidden";
-    }
-    settingsDivs[gridType].removeAttribute("hidden");
-    document.getElementById("generate-button").removeAttribute("hidden");
+    // Hide all divs, then show the one selected
+    settingsDivs.forEach(div => div.style.display = "none");
+    settingsDivs[gridType].style.display = "block";
 
-    const container = document.getElementById("image-settings");
-    container.innerHTML = "";  // Clear existing content
-    container.appendChild(settings);  // Add the new image
+    document.getElementById("download-button").style.display = "block";
+
+    GenerateGrid();
 }
 
 function GenerateGrid() {
-    document.getElementById("confirm-text").innerHTML = "Grid Generated";
-    SquareGrid()
+    const gridType = document.getElementById("grid-type-selector").value;
+    if (gridType == "0") {
+        SquareGrid();
+    } else if (gridType == "1") {
+        OtherGrid();
+    }
+}
+
+function downloadImage() {
+    const imageContainer = document.getElementById("image-container");
+    const image = imageContainer.querySelector("img");
+    if (!image) {
+        alert("No image to download.");
+        return;
+    }
+    const link = document.createElement("a");
+    link.href = image.src;
+    link.download = "grid.png";
+    link.click();
 }

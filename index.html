@@ -10,26 +10,46 @@
   </head>
   <body>
     <h1>Grid Generator</h1>
-    <p>Generate (whole thing is a WIP)</p>
+    <p>Welcome to the Grid Generator! This tool allows you to create customizable grid patterns for various applications. Select a grid type from the dropdown menu and adjust the settings to generate your desired grid.</p>
     <select id="grid-type-selector" onchange="ChangeGridType();">
       <option value="" selected disabled hidden>Choose grid type</option>
       <option value="0">Square Grid</option>
-      <!-- <option value="1">One</option>
+      <!-- <option value="1">Other Grid</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
       <option value="4">Four</option> -->
     </select>
-    <br>
-    <div id="image-settings">
+    <br><br>
+    <div id="image-settings"> <!-- Include all grid types here -->
       <div id="square-grid-settings" hidden>
-        <!-- Add settings for square grid -->
+        <!-- Settings for square grid -->
+        <label for="square-image-width">Image Width:</label> 
+        <input type="number" id="square-image-width" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        
+        <label for="square-image-height">Image Height:</label> 
+        <input type="number" id="square-image-height" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        
+        <label for="square-tile-width">Tile Width:</label> 
+        <input type="number" id="square-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
+        
+        <label for="square-tile-height">Tile Height:</label> 
+        <input type="number" id="square-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
+        
+        <label for="square-background-color">Background Color:</label> 
+        <input type="text" id="square-background-color" onchange="GenerateGrid();" value="black"> <br>
+        
+        <label for="square-tile-color">Tile Color:</label> 
+        <input type="text" id="square-tile-color" onchange="GenerateGrid();" value="#ffffff"> <br>
       </div>
       <div id="other-grid-settings" hidden>
-        <!-- Add settings for other grids -->
+        <!-- Settings for other grids -->
+        <p>Image Width:</p> <input type="number" id="square-image-width" min="1" max="10000"> <br>
+        <p>Image Height:</p> <input type="number" id="square-image-height" min="1" max="10000"> <br>
       </div>
     </div>
-    <button id="generate-button" type="button" onclick="GenerateGrid();" hidden>Generate</button>
-    <p id="confirm-text">confirm text</p>
+    <br>
     <div id="image-container"></div>
+  <br>
+  <button id="download-button" onclick="downloadImage()" hidden>Download Image</button>
   </body>
 </html>
