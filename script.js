@@ -3,7 +3,9 @@ function ChangeGridType() {
 
     let settingsDivs = [ // Include all grid types here, based on the IDs of the divs in html
         document.getElementById("square-grid-settings"),
-        document.getElementById("other-grid-settings")
+        document.getElementById("rectangle-grid-settings")//,
+        // document.getElementById("other-grid-settings"),
+        // document.getElementById("other-grid-settings")
     ];
     // Hide all divs, then show the one selected
     settingsDivs.forEach(div => div.style.display = "none");
@@ -16,11 +18,23 @@ function ChangeGridType() {
 
 function GenerateGrid() {
     const gridType = document.getElementById("grid-type-selector").value;
+    console.log("Generating grid of type: " + gridType);
+    let image;
     if (gridType == "0") {
-        SquareGrid();
+        image = SquareGrid();
     } else if (gridType == "1") {
-        OtherGrid();
+        image = RectangleGrid();
+    } else if (gridType == "2") {
+        image = OtherGrid();
+    } else if (gridType == "3") {
+        image = OtherGrid();
     }
+    
+    const container = document.getElementById("image-container");
+    container.innerHTML = "";  // Clear existing image
+    container.appendChild(image);  // Add the new image
+
+    console.log("Generation complete.");
 }
 
 function downloadImage() {

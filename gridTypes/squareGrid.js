@@ -1,13 +1,12 @@
 function SquareGrid() {
     const image_width = document.getElementById("square-image-width").value;
     const image_height = document.getElementById("square-image-height").value;
-    const tile_width = document.getElementById("square-tile-width").value;
-    const tile_height = document.getElementById("square-tile-height").value;
-    const background_color = document.getElementById("square-background-color").value;
-    const tile_color = document.getElementById("square-tile-color").value;
+    const tile_size = document.getElementById("square-tile-size").value;
+    const color_1 = document.getElementById("square-color-1").value;
+    const color_2 = document.getElementById("square-color-2").value;
 
     // Check and validate that all 6 values are not empty
-    if (image_width == "" || image_height == "" || tile_width == "" || tile_height == "" || background_color == "" || tile_color == "") {
+    if (image_width == "" || image_height == "" || tile_size == "" || color_1 == "" || color_2 == "") {
         return;
     }
 
@@ -16,19 +15,19 @@ function SquareGrid() {
     canvas.height = image_height;
     const context = canvas.getContext("2d");
 
-    context.fillStyle = background_color;
+    context.fillStyle = color_2;
     context.fillRect(0, 0, image_width, image_height);
 
-    context.fillStyle = tile_color;
+    context.fillStyle = color_1;
     let isTileFilled = true;
-    for (let y = 0; y < image_height/tile_height; y++) {
-        for (let x = 0; x < image_width/tile_width; x++) {
+    for (let y = 0; y < image_height/tile_size; y++) {
+        for (let x = 0; x < image_width/tile_size; x++) {
             if (isTileFilled) {
-                context.fillRect(x*tile_width, y*tile_height, tile_width, tile_height);
+                context.fillRect(x*tile_size, y*tile_size, tile_size, tile_size);
             }
             isTileFilled = !isTileFilled;
         }
-        if (Math.ceil(image_width/tile_width) % 2 == 0) {
+        if (Math.ceil(image_width/tile_size) % 2 == 0) {
             isTileFilled = !isTileFilled;
         }
     }
@@ -36,7 +35,5 @@ function SquareGrid() {
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
 
-    const container = document.getElementById("image-container");
-    container.innerHTML = "";  // Clear existing image
-    container.appendChild(image);  // Add the new image
+    return image;
 }
