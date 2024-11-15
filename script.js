@@ -3,8 +3,8 @@ function ChangeGridType() {
 
     let settingsDivs = [ // Include all grid types here, based on the IDs of the divs in html
         document.getElementById("square-grid-settings"),
-        document.getElementById("rectangle-grid-settings")//,
-        // document.getElementById("other-grid-settings"),
+        document.getElementById("rectangle-grid-settings"),
+         document.getElementById("hexagon-grid-settings"),
         // document.getElementById("other-grid-settings")
     ];
     // Hide all divs, then show the one selected
@@ -25,7 +25,7 @@ function GenerateGrid() {
     } else if (gridType == "1") {
         image = RectangleGrid();
     } else if (gridType == "2") {
-        image = OtherGrid();
+        image = HexagonGrid();
     } else if (gridType == "3") {
         image = OtherGrid();
     }

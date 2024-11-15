@@ -8,6 +8,7 @@
     <script src="script.js"></script>
     <script src="gridTypes/squareGrid.js"></script>
     <script src="gridTypes/rectangleGrid.js"></script>
+    <script src="gridTypes/hexagonGrid.js"></script>
     <!-- <script src="gridTypes/triangleGrid.js"></script> -->
   </head>
   <body>
@@ -17,7 +18,7 @@
       <option value="" selected disabled hidden>Choose grid type</option>
       <option value="0">Square Grid</option>
       <option value="1">Rectangle Grid</option>
-      <!-- <option value="2">Two</option>
+      <!-- <option value="2">Hexagon Grid</option>
       <option value="3">Three</option>
       <option value="4">Four</option> -->
     </select>
@@ -25,14 +26,14 @@
     <div id="image-settings"> <!-- Include all grid types here -->
       <div id="square-grid-settings" hidden>
         <!-- Settings for square grid -->
-        <label for="square-image-width">Image Width:</label> 
-        <input type="number" id="square-image-width" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        <label for="square-image-width">Image Width (pixels):</label> 
+        <input type="number" id="square-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
         
-        <label for="square-image-height">Image Height:</label> 
-        <input type="number" id="square-image-height" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        <label for="square-image-height">Image Height (pixels):</label> 
+        <input type="number" id="square-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
           <p style="font-size: 8px;"></p>
-        <label for="square-tile-size">Tile Size:</label> 
-        <input type="number" id="square-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
+        <label for="square-tile-size">Tile Size (pixels):</label> 
+        <input type="number" id="square-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
           <p style="font-size: 8px;"></p>
         <label for="square-color-1">Color 1:</label> 
         <input type="text" id="square-color-1" onchange="GenerateGrid();" value="black"> <br>
@@ -42,16 +43,16 @@
       </div>
       <div id="rectangle-grid-settings" hidden>
         <!-- Settings for rectangle grid -->
-        <label for="rectangle-image-width">Image Width:</label> 
-        <input type="number" id="rectangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        <label for="rectangle-image-width">Image Width (pixels):</label> 
+        <input type="number" id="rectangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
         
-        <label for="rectangle-image-height">Image Height:</label> 
-        <input type="number" id="rectangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="1000"> <br>
+        <label for="rectangle-image-height">Image Height (pixels):</label> 
+        <input type="number" id="rectangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
           <p style="font-size: 8px;"></p>
-        <label for="rectangle-tile-width">Tile Width:</label> 
-        <input type="number" id="rectangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
+        <label for="rectangle-tile-width">Tile Width (pixels):</label> 
+        <input type="number" id="rectangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="80"> <br>
         
-        <label for="rectangle-tile-height">Tile Height:</label> 
+        <label for="rectangle-tile-height">Tile Height (pixels):</label> 
         <input type="number" id="rectangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
           <p style="font-size: 8px;"></p>
         <label for="rectangle-color-1">Color 1:</label> 
@@ -59,6 +60,26 @@
         
         <label for="rectangle-color-2">Color 2:</label> 
         <input type="text" id="rectangle-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+      </div>
+      <div id="hexagon-grid-settings" hidden>
+        <!-- Settings for hexagon grid -->
+        <label for="hexagon-image-width">Image Width (pixels):</label> 
+        <input type="number" id="hexagon-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+        
+        <label for="hexagon-image-height">Image Height (pixels):</label> 
+        <input type="number" id="hexagon-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+          <p style="font-size: 8px;"></p>
+        <label for="hexagon-tile-size">Tile Size (pixels):</label> 
+        <input type="number" id="hexagon-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+          <p style="font-size: 8px;"></p>
+        <label for="hexagon-color-1">Color 1:</label> 
+        <input type="text" id="hexagon-color-1" onchange="GenerateGrid();" value="black"> <br>
+        
+        <label for="hexagon-color-2">Color 2:</label> 
+        <input type="text" id="hexagon-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <label for="hexagon-color-3">Color 3:</label> 
+        <input type="text" id="hexagon-color-3" onchange="GenerateGrid();" value="grey"> <br>
       </div>
     </div>
     <br>
