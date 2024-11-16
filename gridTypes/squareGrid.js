@@ -1,7 +1,7 @@
 function SquareGrid() {
-    const image_width = document.getElementById("square-image-width").value;
-    const image_height = document.getElementById("square-image-height").value;
-    const tile_size = document.getElementById("square-tile-size").value;
+    const image_width = +document.getElementById("square-image-width").value;
+    const image_height = +document.getElementById("square-image-height").value;
+    const tile_size = +document.getElementById("square-tile-size").value;
     const color_1 = document.getElementById("square-color-1").value;
     const color_2 = document.getElementById("square-color-2").value;
 

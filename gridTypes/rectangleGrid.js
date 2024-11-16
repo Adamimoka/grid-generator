@@ -1,8 +1,8 @@
 function RectangleGrid() {
-    const image_width = document.getElementById("rectangle-image-width").value;
-    const image_height = document.getElementById("rectangle-image-height").value;
-    const tile_width = document.getElementById("rectangle-tile-width").value;
-    const tile_height = document.getElementById("rectangle-tile-height").value;
+    const image_width = +document.getElementById("rectangle-image-width").value;
+    const image_height = +document.getElementById("rectangle-image-height").value;
+    const tile_width = +document.getElementById("rectangle-tile-width").value;
+    const tile_height = +document.getElementById("rectangle-tile-height").value;
     const color_1 = document.getElementById("rectangle-color-1").value;
     const color_2 = document.getElementById("rectangle-color-2").value;
 
