@@ -88,6 +88,11 @@
         <label for="hexagon-tile-y-offset">Tile Y Offset:</label> 
         <input type="number" id="hexagon-tile-y-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
         
+        <select id="hexagon-top-type" onchange="GenerateGrid();">
+        <option value="0">Flat Top</option>
+        <option value="1">Pointed Top</option>
+        </select>
+    
         <p style="font-size: 8px;"></p>
         
         <label for="hexagon-color-1">Color 1:</label> 
