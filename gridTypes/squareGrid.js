@@ -5,7 +5,6 @@ function SquareGrid() {
     const color_1 = document.getElementById("square-color-1").value;
     const color_2 = document.getElementById("square-color-2").value;
 
-    // Check and validate that all 6 values are not empty
     if (image_width == "" || image_height == "" || tile_size == "" || color_1 == "" || color_2 == "") {
         return;
     }
