@@ -1,5 +1,5 @@
 # Grid Generator
-Grid Generator is a tool designed to create customizable grid layouts for various applications. This README provides an overview of the project, how to set it up, and how to use it.
+Grid Generator is a tool designed to create customizable grid layouts for various applications. This README provides an overview of the project, including how to access, contribute, and use it.
 
 ## Table of Contents
 
@@ -9,7 +9,7 @@ Grid Generator is a tool designed to create customizable grid layouts for variou
 
 ## Usage
 
-You can access the online demo and see the Grid Generator in action at [Grid Generator Demo](https://adamimoka.github.io/grid-generator/).
+You can access the online demo and see the Grid Generator in action at [adamimoka.github.io/grid-generator](https://adamimoka.github.io/grid-generator/).
 ## Features
 
 - Customizable grids
