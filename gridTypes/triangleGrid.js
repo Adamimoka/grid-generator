@@ -22,93 +22,16 @@ function RegularHexagonGrid() {
     context.fillStyle = "black";
     context.fillRect(0, 0, image_width, image_height);
 
-    drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
-
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
     
     return image;
 }
 
-function drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
-    let hex_width;
-    let hex_height;
-    let color_counter = 2;
-    if (tile_orientation == 0) {
-        hex_width = tile_width;
-        hex_height = tile_height
-    } else {
-        hex_width = tile_width;
-        hex_height = tile_height;
-    }
-    
-    if (tile_orientation == 0) {
-        for (let i = -1; i < image_width / hex_width * 1.05 + 2; i++) {
-            for (let j = -1; j < image_height / hex_height * 1.05 + 2; j++) {
-                if (color_counter % 3 == 0) {
-                    context.fillStyle = color_1;
-                } else if (color_counter % 3 == 1) {
-                    context.fillStyle = color_2;
-                } else {
-                    context.fillStyle = color_3;
-                }
-                color_counter++;
-                if (i % 2 == 0) {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
-                } else {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + 0.5 + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
-                }
-            }
-            if (i % 2 == 0) {
-                color_counter = 2;
-            } else {
-                color_counter = 0;
-            }
-        }
-    } else {
-        for (let i = -1; i < image_height / hex_height + 1; i++) {
-            for (let j = -1; j < image_width / hex_width + 1; j++) {
-                if (color_counter % 3 == 0) {
-                    context.fillStyle = color_1;
-                } else if (color_counter % 3 == 1) {
-                    context.fillStyle = color_2;
-                } else {
-                    context.fillStyle = color_3;
-                }
-                color_counter++;
-                if (i % 2 == 0) {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (j + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
-                } else {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (j + 0.5 + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
-                }
-            }
-            if (i % 2 == 0) {
-                color_counter = 2;
-            } else {
-                color_counter = 0;
-            }
-        }
-    }
+function drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_orientation, color_1, color_2, stroke_width, stroke_color) {
+    return;
 }
 
 function drawTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
-    context.beginPath();
-    if (tile_orientation == 0) {
-        for (let i = 0; i < 6; i++) {
-            context.lineTo(x + size_x * Math.cos(Math.PI / 3 * i), y + size_y * Math.sin(Math.PI / 3 * i));
-        }
-    }
-    else {
-        for (let i = 0; i < 6; i++) {
-            context.lineTo(x + size_x * Math.cos(Math.PI / 3 * i + Math.PI / 6), y + size_y * Math.sin(Math.PI / 3 * i + Math.PI / 6));
-        }
-    }
-    context.closePath();
-    context.fill();
-    if (stroke_width == 0) {
-        return;
-    }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
-    context.stroke();
+    return;
 }
