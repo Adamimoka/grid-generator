@@ -1,4 +1,4 @@
-function RegularHexagonGrid() {
+function TriangleGrid() {
     const image_width = +document.getElementById("triangle-image-width").value;
     const image_height = +document.getElementById("triangle-image-height").value;
     const tile_width = +document.getElementById("triangle-tile-width").value;
