@@ -22,7 +22,7 @@ function RegularHexagonGrid() {
     context.fillStyle = "black";
     context.fillRect(0, 0, image_width, image_height);
 
-    drawTriangleGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
+    drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
@@ -30,16 +30,16 @@ function RegularHexagonGrid() {
     return image;
 }
 
-function drawTriangleGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
+function drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
     let hex_width;
     let hex_height;
     let color_counter = 2;
     if (tile_orientation == 0) {
-        hex_width = 3 / 2 * tile_size;
-        hex_height = Math.sqrt(3) * tile_size;
+        hex_width = tile_width;
+        hex_height = tile_height
     } else {
-        hex_width = Math.sqrt(3) * tile_size;
-        hex_height = 3 / 2 * tile_size;
+        hex_width = tile_width;
+        hex_height = tile_height;
     }
     
     if (tile_orientation == 0) {
