@@ -22,7 +22,7 @@ function RegularHexagonGrid() {
     context.fillStyle = "black";
     context.fillRect(0, 0, image_width, image_height);
 
-    drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
+    drawTriangleGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
@@ -30,7 +30,7 @@ function RegularHexagonGrid() {
     return image;
 }
 
-function drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
+function drawTriangleGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
     let hex_width;
     let hex_height;
     let color_counter = 2;
@@ -91,7 +91,7 @@ function drawRegularHexagonGrid(context, image_width, image_height, tile_size, t
     }
 }
 
-function drawRegularHexagon(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
+function drawTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
     context.beginPath();
     if (tile_orientation == 0) {
         for (let i = 0; i < 6; i++) {
