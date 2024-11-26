@@ -8,6 +8,7 @@ function RectangleGrid() {
 
     // Check and validate that all 6 values are not empty
     if (image_width == "" || image_height == "" || tile_width == "" || tile_height == "" || color_1 == "" || color_2 == "") {
+        console.warn("Missing required fields.");
         return;
     }
 

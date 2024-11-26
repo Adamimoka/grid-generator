@@ -6,7 +6,7 @@ function ChangeGridType() {
         document.getElementById("rectangle-grid-settings"),
         document.getElementById("regular-hexagon-grid-settings"),
         document.getElementById("elongated-hexagon-grid-settings"),
-        // document.getElementById("other-grid-settings")
+        document.getElementById("triangle-grid-settings")
     ];
     // Hide all divs, then show the one selected
     settingsDivs.forEach(div => div.style.display = "none");
@@ -30,7 +30,7 @@ function GenerateGrid() {
     } else if (gridType == "3") {
         image = ElongatedHexagonGrid();
     } else if (gridType == "4") {
-        image = OtherGrid();
+        image = TriangleGrid();
     } else if (gridType == "5") {
         image = OtherGrid();
     }

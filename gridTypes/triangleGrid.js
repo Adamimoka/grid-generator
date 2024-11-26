@@ -1,17 +1,15 @@
 function RegularHexagonGrid() {
-    const image_width = +document.getElementById("regular-hexagon-image-width").value;
-    const image_height = +document.getElementById("regular-hexagon-image-height").value;
-    const tile_size = +document.getElementById("regular-hexagon-tile-size").value;
-    const tile_x_offset = +document.getElementById("regular-hexagon-tile-x-offset").value;
-    const tile_y_offset = +document.getElementById("regular-hexagon-tile-y-offset").value;
-    const tile_orientation = +document.getElementById("regular-hexagon-orientation").value;
-    const color_1 = document.getElementById("regular-hexagon-color-1").value;
-    const color_2 = document.getElementById("regular-hexagon-color-2").value;
-    const color_3 = document.getElementById("regular-hexagon-color-3").value;
-    const stroke_width = +document.getElementById("regular-hexagon-stroke-width").value;
-    const stroke_color = document.getElementById("regular-hexagon-stroke-color").value;
+    const image_width = +document.getElementById("triangle-image-width").value;
+    const image_height = +document.getElementById("triangle-image-height").value;
+    const tile_width = +document.getElementById("triangle-tile-width").value;
+    const tile_height = +document.getElementById("triangle-tile-height").value;
+    const tile_orientation = +document.getElementById("triangle-orientation").value;
+    const color_1 = document.getElementById("triangle-color-1").value;
+    const color_2 = document.getElementById("triangle-color-2").value;
+    const stroke_width = +document.getElementById("triangle-stroke-width").value;
+    const stroke_color = document.getElementById("triangle-stroke-color").value;
 
-    if (image_width === "" || image_height === "" || tile_size === "" || tile_x_offset === "" || tile_y_offset === "" || color_1 === "" || color_2 === "" || color_3 === "" || stroke_width === "" || stroke_color === "") {
+    if (image_width === "" || image_height === "" || tile_width === "" || tile_height === "" || color_1 === "" || color_2 === "" || stroke_width === "" || stroke_color === "") {
         console.warn("Missing required fields.");
         return;
     }

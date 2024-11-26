@@ -6,6 +6,7 @@ function SquareGrid() {
     const color_2 = document.getElementById("square-color-2").value;
 
     if (image_width == "" || image_height == "" || tile_size == "" || color_1 == "" || color_2 == "") {
+        console.warn("Missing required fields.");
         return;
     }
 
