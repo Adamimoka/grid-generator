@@ -5,9 +5,10 @@ function RectangleGrid() {
     const tile_height = +document.getElementById("rectangle-tile-height").value;
     const color_1 = document.getElementById("rectangle-color-1").value;
     const color_2 = document.getElementById("rectangle-color-2").value;
+    const stroke_width = +document.getElementById("rectangle-stroke-width").value;
+    const stroke_color = document.getElementById("rectangle-stroke-color").value;
 
-    // Check and validate that all 6 values are not empty
-    if (image_width == "" || image_height == "" || tile_width == "" || tile_height == "" || color_1 == "" || color_2 == "") {
+    if (isNaN(image_width) || isNaN(image_height) || isNaN(tile_width) || isNaN(tile_height) || color_1 === "" || color_2 === "" || isNaN(stroke_width) || stroke_color === "") {
         console.warn("Missing required fields.");
         return;
     }
@@ -22,10 +23,10 @@ function RectangleGrid() {
 
     context.fillStyle = color_1;
     let isTileFilled = true;
-    for (let y = 0; y < image_height/tile_height; y++) {
-        for (let x = 0; x < image_width/tile_width; x++) {
+    for (let y = -1; y < image_height/tile_height + 1; y++) {
+        for (let x = -1; x < image_width/tile_width + 1; x++) {
             if (isTileFilled) {
-                context.fillRect(x*tile_width, y*tile_height, tile_width, tile_height);
+                drawRectangle(context, x, y, tile_width, tile_height, stroke_width, stroke_color);
             }
             isTileFilled = !isTileFilled;
         }
@@ -38,4 +39,15 @@ function RectangleGrid() {
     image.src = canvas.toDataURL("image/png");
     
     return image;
+}
+
+function drawRectangle(context, x, y, tile_width, tile_height, stroke_width, stroke_color) {
+    context.fillRect(x * tile_width, y * tile_height, tile_width, tile_height);
+
+    if (stroke_width == 0) {
+        return;
+    }
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
+    context.strokeRect(x * tile_width, y * tile_height, tile_width, tile_height);
 }
