@@ -8,9 +8,9 @@
     <script src="script.js"></script>
     <script src="gridTypes/squareGrid.js"></script>
     <script src="gridTypes/rectangleGrid.js"></script>
+    <script src="gridTypes/triangleGrid.js"></script>
     <script src="gridTypes/regularHexagonGrid.js"></script>
     <script src="gridTypes/elongatedHexagonGrid.js"></script>
-    <script src="gridTypes/triangleGrid.js"></script>
   </head>
   <body>
     <h1>Grid Generator</h1>
@@ -19,8 +19,9 @@
       <option value="" selected disabled hidden>Choose grid type</option>
       <option value="0">Square Grid</option>
       <option value="1">Rectangle Grid</option>
-      <option value="2">Regular Hexagon Grid</option>
-      <option value="3">Elongated Hexagon Grid</option>
+      <option value="2">Triangle Grid</option>
+      <option value="3">Regular Hexagon Grid</option>
+      <option value="4">Elongated Hexagon Grid</option>
       <!-- <option value="4">Triangle Grid</option> --> <!-- Triangle grid is not yet implemented -->
     </select>
     <br><br>
@@ -45,6 +46,14 @@
         
         <label for="square-color-2">Color 2:</label> 
         <input type="text" id="square-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="square-stroke-width">Stroke Width:</label>
+        <input type="number" id="square-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="square-stroke-color">Stroke Color:</label>
+        <input type="text" id="square-stroke-color" onchange="GenerateGrid();" value="blue"> <br>
       </div>
       <div id="rectangle-grid-settings" hidden>
         <!-- Settings for rectangle grid -->
@@ -69,6 +78,52 @@
         
         <label for="rectangle-color-2">Color 2:</label> 
         <input type="text" id="rectangle-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="rectangle-stroke-width">Stroke Width:</label>
+        <input type="number" id="rectangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="rectangle-stroke-color">Stroke Color:</label>
+        <input type="text" id="rectangle-stroke-color" onchange="GenerateGrid();" value="blue"> <br>
+      </div>
+      <div id="triangle-grid-settings" hidden>
+        <!-- Settings for triangle grid -->
+        <label for="triangle-image-width">Image Width (pixels):</label> 
+        <input type="number" id="triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+        
+        <label for="triangle-image-height">Image Height (pixels):</label> 
+        <input type="number" id="triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+        
+        <p style="font-size: 8px;"></p>
+        
+        <label for="triangle-tile-width">Tile Width (pixels):</label> 
+        <input type="number" id="triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+             
+        <label for="triangle-tile-height">Tile Height (pixels):</label> 
+        <input type="number" id="triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+
+        <label for="triangle-orientation">Tile Orientation:</label> 
+        <select id="triangle-orientation" onchange="GenerateGrid();">
+        <option value="0">Tip Up/Down</option>
+        <option value="1">Tip Left/Right</option>
+        </select>
+    
+        <p style="font-size: 8px;"></p>
+        
+        <label for="triangle-color-1">Color 1:</label> 
+        <input type="text" id="triangle-color-1" onchange="GenerateGrid();" value="white"> <br>
+        
+        <label for="triangle-color-2">Color 2:</label> 
+        <input type="text" id="triangle-color-2" onchange="GenerateGrid();" value="black"> <br>
+
+        <p style="font-size: 8px;"></p>
+        
+        <label for="triangle-stroke-width">Stroke Width:</label> 
+        <input type="number" id="triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+        
+        <label for="triangle-stroke-color">Stroke Color:</label> 
+        <input type="text" id="triangle-stroke-color" onchange="GenerateGrid();" value="blue"> <br>
       </div>
       <div id="regular-hexagon-grid-settings" hidden>
         <!-- Settings for regular hexagon grid -->
@@ -161,45 +216,6 @@
         <label for="elongated-hexagon-stroke-color">Stroke Color:</label> 
         <input type="text" id="elongated-hexagon-stroke-color" onchange="GenerateGrid();" value="black"> <br>
       </div>
-      <div id="triangle-grid-settings" hidden>
-        <!-- Settings for triangle grid -->
-        <label for="triangle-image-width">Image Width (pixels):</label> 
-        <input type="number" id="triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-        
-        <label for="triangle-image-height">Image Height (pixels):</label> 
-        <input type="number" id="triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-        
-        <p style="font-size: 8px;"></p>
-        
-        <label for="triangle-tile-width">Tile Width (pixels):</label> 
-        <input type="number" id="triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
-             
-        <label for="triangle-tile-height">Tile Height (pixels):</label> 
-        <input type="number" id="triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
-
-        <label for="triangle-orientation">Tile Orientation:</label> 
-        <select id="triangle-orientation" onchange="GenerateGrid();">
-        <option value="0">Corner Up/Down</option>
-        <option value="1">Corner Sideways</option>
-        </select>
-    
-        <p style="font-size: 8px;"></p>
-        
-        <label for="triangle-color-1">Color 1:</label> 
-        <input type="text" id="triangle-color-1" onchange="GenerateGrid();" value="red"> <br>
-        
-        <label for="triangle-color-2">Color 2:</label> 
-        <input type="text" id="triangle-color-2" onchange="GenerateGrid();" value="yellow"> <br>
-
-        <p style="font-size: 8px;"></p>
-        
-        <label for="triangle-stroke-width">Stroke Width:</label> 
-        <input type="number" id="triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="2" step="1"> <br>
-        
-        <label for="triangle-stroke-color">Stroke Color:</label> 
-        <input type="text" id="triangle-stroke-color" onchange="GenerateGrid();" value="black"> <br>
-      </div>
-
     </div>
     <br>
     <div id="image-container"></div>
