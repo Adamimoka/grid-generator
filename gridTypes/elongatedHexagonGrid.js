@@ -12,8 +12,8 @@ function ElongatedHexagonGrid() {
     const stroke_width = +document.getElementById("elongated-hexagon-stroke-width").value;
     const stroke_color = document.getElementById("elongated-hexagon-stroke-color").value;
 
-    if (image_width === "" || image_height === "" || tile_width === "" || tile_height === "" || tile_x_offset === "" || tile_y_offset === "" || color_1 === "" || color_2 === "" || color_3 === "" || stroke_width === "" || stroke_color === "") {
-        console.warn("Missing required fields.");
+    if (isNaN(image_width) || isNaN(image_height) || isNaN(tile_width) || isNaN(tile_height) || isNaN(tile_x_offset) || isNaN(tile_y_offset) || color_1 === "" || color_2 === "" || color_3 === "" || isNaN(stroke_width) || stroke_color === "") {
+        console.warn("Missing or invalid required fields.");
         return;
     }
 
