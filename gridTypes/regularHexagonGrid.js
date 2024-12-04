@@ -23,8 +23,10 @@ function RegularHexagonGrid() {
 
     context.fillStyle = "black";
     context.fillRect(0, 0, image_width, image_height);
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
 
-    drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
+    drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width);
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
@@ -32,7 +34,7 @@ function RegularHexagonGrid() {
     return image;
 }
 
-function drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
+function drawRegularHexagonGrid(context, image_width, image_height, tile_size, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width) {
     let hex_width;
     let hex_height;
     let color_counter = 2;
@@ -56,9 +58,9 @@ function drawRegularHexagonGrid(context, image_width, image_height, tile_size, t
                 }
                 color_counter++;
                 if (i % 2 == 0) {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
+                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + tile_y_offset), tile_size, tile_size, stroke_width);
                 } else {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + 0.5 + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
+                    drawRegularHexagon(context, tile_orientation, hex_width * (i + tile_x_offset), hex_height * (j + 0.5 + tile_y_offset), tile_size, tile_size, stroke_width);
                 }
             }
             if (i % 2 == 0) {
@@ -79,9 +81,9 @@ function drawRegularHexagonGrid(context, image_width, image_height, tile_size, t
                 }
                 color_counter++;
                 if (i % 2 == 0) {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (j + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
+                    drawRegularHexagon(context, tile_orientation, hex_width * (j + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width);
                 } else {
-                    drawRegularHexagon(context, tile_orientation, hex_width * (j + 0.5 + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width, stroke_color);
+                    drawRegularHexagon(context, tile_orientation, hex_width * (j + 0.5 + tile_x_offset), hex_height * (i + tile_y_offset), tile_size, tile_size, stroke_width);
                 }
             }
             if (i % 2 == 0) {
@@ -93,7 +95,7 @@ function drawRegularHexagonGrid(context, image_width, image_height, tile_size, t
     }
 }
 
-function drawRegularHexagon(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
+function drawRegularHexagon(context, tile_orientation, x, y, size_x, size_y, stroke_width) {
     context.beginPath();
     if (tile_orientation == 0) {
         for (let i = 0; i < 6; i++) {
@@ -110,7 +112,5 @@ function drawRegularHexagon(context, tile_orientation, x, y, size_x, size_y, str
     if (stroke_width == 0) {
         return;
     }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
     context.stroke();
 }

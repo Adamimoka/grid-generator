@@ -19,13 +19,15 @@ function SquareGrid() {
 
     context.fillStyle = color_2;
     context.fillRect(0, 0, image_width, image_height);
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
 
     context.fillStyle = color_1;
     let isTileFilled = true;
     for (let y = -1; y < image_height/tile_size + 1; y++) {
         for (let x = -1; x < image_width/tile_size + 1; x++) {
             if (isTileFilled) {
-                drawSquare(context, x, y, tile_size, stroke_width, stroke_color);
+                drawSquare(context, x, y, tile_size, stroke_width);
             }
             isTileFilled = !isTileFilled;
         }
@@ -40,13 +42,11 @@ function SquareGrid() {
     return image;
 }
 
-function drawSquare(context, x, y, tile_size, stroke_width, stroke_color) {
+function drawSquare(context, x, y, tile_size, stroke_width) {
     context.fillRect(x * tile_size, y * tile_size, tile_size, tile_size);
 
     if (stroke_width == 0) {
         return;
     }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
     context.strokeRect(x * tile_size, y * tile_size, tile_size, tile_size);
 }

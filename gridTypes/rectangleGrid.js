@@ -20,13 +20,15 @@ function RectangleGrid() {
 
     context.fillStyle = color_2;
     context.fillRect(0, 0, image_width, image_height);
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
 
     context.fillStyle = color_1;
     let isTileFilled = true;
     for (let y = -1; y < image_height/tile_height + 1; y++) {
         for (let x = -1; x < image_width/tile_width + 1; x++) {
             if (isTileFilled) {
-                drawRectangle(context, x, y, tile_width, tile_height, stroke_width, stroke_color);
+                drawRectangle(context, x, y, tile_width, tile_height, stroke_width);
             }
             isTileFilled = !isTileFilled;
         }
@@ -41,13 +43,11 @@ function RectangleGrid() {
     return image;
 }
 
-function drawRectangle(context, x, y, tile_width, tile_height, stroke_width, stroke_color) {
+function drawRectangle(context, x, y, tile_width, tile_height, stroke_width) {
     context.fillRect(x * tile_width, y * tile_height, tile_width, tile_height);
 
     if (stroke_width == 0) {
         return;
     }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
     context.strokeRect(x * tile_width, y * tile_height, tile_width, tile_height);
 }
