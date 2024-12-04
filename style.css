@@ -28,8 +28,6 @@ footer {
     text-align: center;
     position: static;
     padding: 10px;
-    /* bottom: 0;
-    left: 0; */
     width: 100%; 
 }
 
@@ -40,7 +38,6 @@ h1 {
 
 p, label, input, select {
     font-size: 24px;
-    /* color: #000; */
 }
 
 #image-container {
