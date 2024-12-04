@@ -1,8 +1,8 @@
 function ElongatedHexagonGrid() {
     const image_width = +document.getElementById("elongated-hexagon-image-width").value;
     const image_height = +document.getElementById("elongated-hexagon-image-height").value;
-    const tile_width = +document.getElementById("elongated-hexagon-tile-width").value;
-    const tile_height = +document.getElementById("elongated-hexagon-tile-height").value;
+    let tile_width = +document.getElementById("elongated-hexagon-tile-width").value;
+    let tile_height = +document.getElementById("elongated-hexagon-tile-height").value;
     const tile_x_offset = +document.getElementById("elongated-hexagon-tile-x-offset").value;
     const tile_y_offset = +document.getElementById("elongated-hexagon-tile-y-offset").value;
     const tile_orientation = +document.getElementById("elongated-hexagon-orientation").value;
@@ -17,6 +17,9 @@ function ElongatedHexagonGrid() {
         return;
     }
 
+    tile_width *= 1/2;
+    tile_height *= 1/Math.sqrt(3);
+
     const canvas = document.createElement("canvas");
     canvas.width = image_width;
     canvas.height = image_height;
@@ -24,8 +27,10 @@ function ElongatedHexagonGrid() {
 
     context.fillStyle = "black";
     context.fillRect(0, 0, image_width, image_height);
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
 
-    drawElongatedHexagonGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color);
+    drawElongatedHexagonGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width);
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
@@ -33,7 +38,7 @@ function ElongatedHexagonGrid() {
     return image;
 }
 
-function drawElongatedHexagonGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width, stroke_color) {
+function drawElongatedHexagonGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width) {
     let color_counter = 2;
     
     if (tile_orientation == 0) {
@@ -48,9 +53,9 @@ function drawElongatedHexagonGrid(context, image_width, image_height, tile_width
                 }
                 color_counter++;
                 if (i % 2 == 0) {
-                    drawElongatedHexagon(context, tile_orientation, tile_width * 3 / 2 * (i + tile_x_offset), tile_height * Math.sqrt(3) * (j + tile_y_offset), tile_width, tile_height, stroke_width, stroke_color);
+                    drawElongatedHexagon(context, tile_orientation, tile_width * 3 / 2 * (i + tile_x_offset), tile_height * Math.sqrt(3) * (j + tile_y_offset), tile_width, tile_height, stroke_width);
                 } else {
-                    drawElongatedHexagon(context, tile_orientation, tile_width * 3 / 2 * (i + tile_x_offset), tile_height * Math.sqrt(3) * (j + 0.5 + tile_y_offset), tile_width, tile_height, stroke_width, stroke_color);
+                    drawElongatedHexagon(context, tile_orientation, tile_width * 3 / 2 * (i + tile_x_offset), tile_height * Math.sqrt(3) * (j + 0.5 + tile_y_offset), tile_width, tile_height, stroke_width);
                 }
             }
             if (i % 2 == 0) {
@@ -71,9 +76,9 @@ function drawElongatedHexagonGrid(context, image_width, image_height, tile_width
                 }
                 color_counter++;
                 if (i % 2 == 0) {
-                    drawElongatedHexagon(context, tile_orientation, tile_width * Math.sqrt(3) * (j + tile_x_offset), tile_height * 3 / 2 * (i + tile_y_offset), tile_width, tile_height, stroke_width, stroke_color);
+                    drawElongatedHexagon(context, tile_orientation, tile_width * Math.sqrt(3) * (j + tile_x_offset), tile_height * 3 / 2 * (i + tile_y_offset), tile_width, tile_height, stroke_width);
                 } else {
-                    drawElongatedHexagon(context, tile_orientation, tile_width * Math.sqrt(3) * (j + 0.5 + tile_x_offset), tile_height * 3 / 2 * (i + tile_y_offset), tile_width, tile_height, stroke_width, stroke_color);
+                    drawElongatedHexagon(context, tile_orientation, tile_width * Math.sqrt(3) * (j + 0.5 + tile_x_offset), tile_height * 3 / 2 * (i + tile_y_offset), tile_width, tile_height, stroke_width);
                 }
             }
             if (i % 2 == 0) {
@@ -85,7 +90,7 @@ function drawElongatedHexagonGrid(context, image_width, image_height, tile_width
     }
 }
 
-function drawElongatedHexagon(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
+function drawElongatedHexagon(context, tile_orientation, x, y, size_x, size_y, stroke_width) {
     context.beginPath();
     if (tile_orientation == 0) {
         for (let i = 0; i < 6; i++) {
@@ -102,7 +107,5 @@ function drawElongatedHexagon(context, tile_orientation, x, y, size_x, size_y, s
     if (stroke_width == 0) {
         return;
     }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
     context.stroke();
 }
