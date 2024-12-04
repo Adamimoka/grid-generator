@@ -17,8 +17,14 @@ function ElongatedHexagonGrid() {
         return;
     }
 
-    tile_width *= 1/2;
-    tile_height *= 1/Math.sqrt(3);
+    if (tile_orientation == 0) {
+        tile_width *= 1/2;
+        tile_height *= 1/Math.sqrt(3);
+    }
+    else {
+        tile_width *= 1/Math.sqrt(3);
+        tile_height *= 1/2;
+    }
 
     const canvas = document.createElement("canvas");
     canvas.width = image_width;
@@ -42,8 +48,8 @@ function drawElongatedHexagonGrid(context, image_width, image_height, tile_width
     let color_counter = 2;
     
     if (tile_orientation == 0) {
-        for (let i = -1; i < image_width / tile_width * 1.05 + 2; i++) {
-            for (let j = -1; j < image_height / tile_height * 1.05 + 2; j++) {
+        for (let i = -1; i < image_width / tile_width * .75 + 2; i++) {
+            for (let j = -1; j < image_height / tile_height * .606 + 2; j++) {
                 if (color_counter % 3 == 0) {
                     context.fillStyle = color_1;
                 } else if (color_counter % 3 == 1) {
@@ -65,8 +71,8 @@ function drawElongatedHexagonGrid(context, image_width, image_height, tile_width
             }
         }
     } else {
-        for (let i = -1; i < image_height / tile_height + 1; i++) {
-            for (let j = -1; j < image_width / tile_width + 1; j++) {
+        for (let i = -1; i < image_height / tile_height * .75 + 1; i++) {
+            for (let j = -1; j < image_width / tile_width * .606 + 1; j++) {
                 if (color_counter % 3 == 0) {
                     context.fillStyle = color_1;
                 } else if (color_counter % 3 == 1) {
