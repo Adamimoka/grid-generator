@@ -4,7 +4,9 @@ function ChangeGridType() {
     let settingsDivs = [ // Include all grid types here, based on the IDs of the divs in html
         document.getElementById("square-grid-settings"),
         document.getElementById("rectangle-grid-settings"),
-        document.getElementById("triangle-grid-settings"),
+        document.getElementById("equilateral-triangle-grid-settings"),
+        document.getElementById("isosceles-triangle-grid-settings"),
+        document.getElementById("right-triangle-grid-settings"),
         document.getElementById("regular-hexagon-grid-settings"),
         document.getElementById("elongated-hexagon-grid-settings")
     ];
@@ -26,13 +28,15 @@ function GenerateGrid() {
     } else if (gridType == "1") {
         image = RectangleGrid();
     } else if (gridType == "2") {
-        image = TriangleGrid();
+        image = EquilateralTriangleGrid();
     } else if (gridType == "3") {
-        image = RegularHexagonGrid();
+        image = IsoscelesTriangleGrid();
     } else if (gridType == "4") {
-        image = ElongatedHexagonGrid();
+        image = RightTriangleGrid();
     } else if (gridType == "5") {
-        image = OtherGrid();
+        image = RegularHexagonGrid();
+    } else if (gridType == "6") {
+        image = ElongatedHexagonGrid();
     }
     
     const container = document.getElementById("image-container");

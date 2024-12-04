@@ -1,13 +1,13 @@
-function TriangleGrid() {
-    const image_width = +document.getElementById("triangle-image-width").value;
-    const image_height = +document.getElementById("triangle-image-height").value;
-    const tile_width = +document.getElementById("triangle-tile-width").value;
-    const tile_height = +document.getElementById("triangle-tile-height").value;
-    const tile_orientation = +document.getElementById("triangle-orientation").value;
-    const color_1 = document.getElementById("triangle-color-1").value;
-    const color_2 = document.getElementById("triangle-color-2").value;
-    const stroke_width = +document.getElementById("triangle-stroke-width").value;
-    const stroke_color = document.getElementById("triangle-stroke-color").value;
+function IsoscelesTriangleGrid() {
+    const image_width = +document.getElementById("isosceles-triangle-image-width").value;
+    const image_height = +document.getElementById("isosceles-triangle-image-height").value;
+    const tile_width = +document.getElementById("isosceles-triangle-tile-width").value;
+    const tile_height = +document.getElementById("isosceles-triangle-tile-height").value;
+    const tile_orientation = +document.getElementById("isosceles-triangle-orientation").value;
+    const color_1 = document.getElementById("isosceles-triangle-color-1").value;
+    const color_2 = document.getElementById("isosceles-triangle-color-2").value;
+    const stroke_width = +document.getElementById("isosceles-triangle-stroke-width").value;
+    const stroke_color = document.getElementById("isosceles-triangle-stroke-color").value;
 
     if (isNaN(image_width) || isNaN(image_height) || isNaN(tile_width) || isNaN(tile_height) || color_1 === "" || color_2 === "" || isNaN(stroke_width) || stroke_color === "") {
         console.warn("Missing required fields.");
@@ -19,19 +19,17 @@ function TriangleGrid() {
     canvas.height = image_height;
     const context = canvas.getContext("2d");
 
-    context.fillStyle = "black";
-    context.fillRect(0, 0, image_width, image_height);
-
-
     context.fillStyle = color_2;
     context.fillRect(0, 0, image_width, image_height);
+    context.strokeStyle = stroke_color;
+    context.lineWidth = stroke_width;
 
     context.fillStyle = color_1;
     let isTileFilled = true;
     for (let y = -1; y < image_height/tile_height + 1; y++) {
         for (let x = -1; x < image_width/tile_width + 1; x++) {
-            let x_offset = 0
-            let y_offset = 0
+            let x_offset = 0;
+            let y_offset = 0;
             if (tile_orientation == 0) {
                 if (y % 2 == 0) {
                     x_offset = -tile_width / 2;
@@ -43,7 +41,7 @@ function TriangleGrid() {
                 }
             }
 
-            drawTriangle(context, tile_orientation, x*tile_width + x_offset, y*tile_height + y_offset, tile_width, tile_height, stroke_width, stroke_color);
+            drawIsoscelesTriangle(context, tile_orientation, x*tile_width + x_offset, y*tile_height + y_offset, tile_width, tile_height, stroke_width);
         }
         if (Math.ceil(image_width/tile_width) % 2 == 0) {
             isTileFilled = !isTileFilled;
@@ -56,11 +54,7 @@ function TriangleGrid() {
     return image;
 }
 
-function drawTriangleGrid(context, image_width, image_height, tile_width, tile_height, tile_orientation, color_1, color_2, stroke_width, stroke_color) {
-    
-}
-
-function drawTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_width, stroke_color) {
+function drawIsoscelesTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_width) {
     context.beginPath();
     if (tile_orientation == 0) {
         context.lineTo(x + size_x, y);
@@ -77,7 +71,5 @@ function drawTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_wi
     if (stroke_width == 0) {
         return;
     }
-    context.strokeStyle = stroke_color;
-    context.lineWidth = stroke_width;
     context.stroke();
 }
