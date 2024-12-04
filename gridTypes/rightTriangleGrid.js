@@ -25,16 +25,9 @@ function RightTriangleGrid() {
     context.lineWidth = stroke_width;
 
     context.fillStyle = color_1;
-    let isTileFilled = true;
-    for (let y = -1; y < image_height/tile_size + 1; y++) {
-        for (let x = -1; x < image_width/tile_size + 1; x++) {
-            if (isTileFilled) {
-                drawRightTriangle(context, tile_orientation, x*tile_width + x_offset, y*tile_height + y_offset, tile_width, tile_height, stroke_width);
-            }
-            isTileFilled = !isTileFilled;
-        }
-        if (Math.ceil(image_width/tile_size) % 2 == 0) {
-            isTileFilled = !isTileFilled;
+    for (let y = -1; y < image_height/tile_height + 1; y++) {
+        for (let x = -1; x < image_width/tile_width + 1; x++) {
+            drawRightTriangle(context, tile_orientation, x, y, tile_width, tile_height, stroke_width);
         }
     }
 
@@ -46,18 +39,20 @@ function RightTriangleGrid() {
 
 function drawRightTriangle(context, tile_orientation, x, y, size_x, size_y, stroke_width) {
     context.beginPath();
+    context.moveTo(x * size_x, y * size_y);
     if (tile_orientation == 0) {
-        context.lineTo(x + size_x, y);
-        context.lineTo(x + size_x / 2, y + size_y);
-        context.lineTo(x, y);
+        context.lineTo(x * size_x + size_x, y * size_y + size_y);
+        context.lineTo(x * size_x + size_x, y * size_y);
+        context.lineTo(x * size_x, y * size_y);
     }
     else {
-        context.lineTo(x, y + size_y / 2);
-        context.lineTo(x + size_x, y);
-        context.lineTo(x + size_x, y + size_y);
+        context.lineTo(x * size_x, y * size_y + size_y);
+        context.lineTo(x * size_x + size_x, y * size_y);
+        context.lineTo(x * size_x, y * size_y);
     }
     context.closePath();
     context.fill();
+
     if (stroke_width == 0) {
         return;
     }
