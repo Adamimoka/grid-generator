@@ -26,8 +26,8 @@ function IsoscelesTriangleGrid() {
 
     context.fillStyle = color_1;
     let isTileFilled = true;
-    for (let y = -1; y < image_height/tile_height + 1; y++) {
-        for (let x = -1; x < image_width/tile_width + 1; x++) {
+    for (let y = -1; y < image_height / tile_height + 1; y++) {
+        for (let x = -1; x < image_width / tile_width + 1; x++) {
             let x_offset = 0;
             let y_offset = 0;
             if (tile_orientation == 0) {
@@ -41,16 +41,16 @@ function IsoscelesTriangleGrid() {
                 }
             }
 
-            drawIsoscelesTriangle(context, tile_orientation, x*tile_width + x_offset, y*tile_height + y_offset, tile_width, tile_height, stroke_width);
+            drawIsoscelesTriangle(context, tile_orientation, x * tile_width + x_offset, y * tile_height + y_offset, tile_width, tile_height, stroke_width);
         }
-        if (Math.ceil(image_width/tile_width) % 2 == 0) {
+        if (Math.ceil(image_width / tile_width) % 2 == 0) {
             isTileFilled = !isTileFilled;
         }
     }
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
-    
+
     return image;
 }
 

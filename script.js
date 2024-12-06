@@ -14,7 +14,7 @@ function ChangeGridType() {
     settingsDivs.forEach(div => div.style.display = "none");
     settingsDivs[gridType].style.display = "block";
 
-    document.getElementById("download-button").style.display = "block";
+    document.getElementById("download-section").style.display = "block";
 
     GenerateGrid();
 }
@@ -38,10 +38,12 @@ function GenerateGrid() {
     } else if (gridType == "6") {
         image = ElongatedHexagonGrid();
     }
-    
+
     const container = document.getElementById("image-container");
     container.innerHTML = "";  // Clear existing image
     container.appendChild(image);  // Add the new image
+    
+    image.style = "max-width: 100%; height: auto;"; // Limit image size to container width
 
     console.log("Generation completed successfully.");
 }
@@ -55,6 +57,7 @@ function downloadImage() {
     }
     const link = document.createElement("a");
     link.href = image.src;
-    link.download = "grid.png";
+    const filename = document.getElementById("download-filename").value;
+    link.download = filename + ".png";
     link.click();
 }

@@ -25,15 +25,15 @@ function RightTriangleGrid() {
     context.lineWidth = stroke_width;
 
     context.fillStyle = color_1;
-    for (let y = -1; y < image_height/tile_height + 1; y++) {
-        for (let x = -1; x < image_width/tile_width + 1; x++) {
+    for (let y = -1; y < image_height / tile_height + 1; y++) {
+        for (let x = -1; x < image_width / tile_width + 1; x++) {
             drawRightTriangle(context, tile_orientation, x, y, tile_width, tile_height, stroke_width);
         }
     }
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
-    
+
     return image;
 }
 

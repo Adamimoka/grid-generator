@@ -26,7 +26,7 @@ function EquilateralTriangleGrid() {
         tile_width = tile_size * Math.sqrt(3) / 2;
         tile_height = tile_size;
     }
-    
+
     context.fillStyle = color_2;
     context.fillRect(0, 0, image_width, image_height);
     context.strokeStyle = stroke_color;
@@ -34,8 +34,8 @@ function EquilateralTriangleGrid() {
 
     context.fillStyle = color_1;
     let isTileFilled = true;
-    for (let y = -1; y < image_height/tile_height + 1; y++) {
-        for (let x = -1; x < image_width/tile_width + 1; x++) {
+    for (let y = -1; y < image_height / tile_height + 1; y++) {
+        for (let x = -1; x < image_width / tile_width + 1; x++) {
             let x_offset = 0;
             let y_offset = 0;
             if (tile_orientation == 0) {
@@ -49,16 +49,16 @@ function EquilateralTriangleGrid() {
                 }
             }
 
-            drawEquilateralTriangle(context, tile_orientation, x*tile_width + x_offset, y*tile_height + y_offset, tile_width, tile_height, stroke_width);
+            drawEquilateralTriangle(context, tile_orientation, x * tile_width + x_offset, y * tile_height + y_offset, tile_width, tile_height, stroke_width);
         }
-        if (Math.ceil(image_width/tile_width) % 2 == 0) {
+        if (Math.ceil(image_width / tile_width) % 2 == 0) {
             isTileFilled = !isTileFilled;
         }
     }
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
-    
+
     return image;
 }
 

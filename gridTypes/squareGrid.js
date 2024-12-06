@@ -24,14 +24,14 @@ function SquareGrid() {
 
     context.fillStyle = color_1;
     let isTileFilled = true;
-    for (let y = -1; y < image_height/tile_size + 1; y++) {
-        for (let x = -1; x < image_width/tile_size + 1; x++) {
+    for (let y = -1; y < image_height / tile_size + 1; y++) {
+        for (let x = -1; x < image_width / tile_size + 1; x++) {
             if (isTileFilled) {
                 drawSquare(context, x, y, tile_size, stroke_width);
             }
             isTileFilled = !isTileFilled;
         }
-        if (Math.ceil(image_width/tile_size) % 2 == 0) {
+        if (Math.ceil(image_width / tile_size) % 2 == 0) {
             isTileFilled = !isTileFilled;
         }
     }

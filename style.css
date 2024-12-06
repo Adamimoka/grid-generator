@@ -5,20 +5,12 @@ body {
     margin: 0;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 25px;
-    text-align: center;
-    font-size: 24px;
-}
-
 main {
     background-color: #afc1c1;
     padding: 25px;
     margin: 20px auto;
     max-width: 800px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #00000080;
 }
 
 footer {
@@ -27,8 +19,10 @@ footer {
     background-color: #9babab;
     text-align: center;
     position: static;
-    padding: 10px;
-    width: 100%; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    box-shadow: 0 50vh 0 50vh #9babab;
 }
 
 h1 {
@@ -36,7 +30,7 @@ h1 {
     color: #206060;
 }
 
-p, label, input, select {
+p, label, input, select, button  {
     font-size: 24px;
 }
 
@@ -44,4 +38,6 @@ p, label, input, select {
     border: 4px dashed red;
     display: inline-block;
     line-height: 0px;
+    max-width: 100%;
+    overflow: hidden;
 }

@@ -1,312 +1,320 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid Generator</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-    <link rel="icon" type="image/png" href="favicon.png">
 
-    <script src="gridTypes/squareGrid.js"></script>
-    <script src="gridTypes/rectangleGrid.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
 
-    <script src="gridTypes/equilateralTriangleGrid.js"></script>
-    <script src="gridTypes/isoscelesTriangleGrid.js"></script>
-    <script src="gridTypes/rightTriangleGrid.js"></script>
-    
-    <script src="gridTypes/regularHexagonGrid.js"></script>
-    <script src="gridTypes/elongatedHexagonGrid.js"></script>
-  </head>
-  <body>
-    <main>
-      <h1>Grid Generator</h1>
-      <p>Select a grid type from the dropdown menu and adjust the settings to generate your desired grid.</p>
-      <select id="grid-type-selector" onchange="ChangeGridType();">
-        <option value="" selected disabled hidden>Choose grid type</option>
-        <option value="0">Square Grid</option>
-        <option value="1">Rectangle Grid</option>
-        <option disabled></option>
-        <option value="2">Equilateral Triangle Grid</option>
-        <option value="3">Isosceles Triangle Grid</option>
-        <option value="4">Right Triangle Grid</option>
-        <option disabled></option>
-        <option value="5">Regular Hexagon Grid</option>
-        <option value="6">Elongated Hexagon Grid</option>
-      </select>
-      <br><br>
-      <div id="image-settings"> <!-- Include all grid types here -->
-        <div id="square-grid-settings" hidden>
-          <!-- Settings for square grid -->
-          <label for="square-image-width">Image Width (pixels):</label> 
-          <input type="number" id="square-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="square-image-height">Image Height (pixels):</label> 
-          <input type="number" id="square-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="square-tile-size">Tile Size (pixels):</label> 
-          <input type="number" id="square-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="square-color-1">Color 1:</label> 
-          <input type="color" id="square-color-1" onchange="GenerateGrid();" value="#000000"> <br>
-          
-          <label for="square-color-2">Color 2:</label> 
-          <input type="color" id="square-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+  <script src="gridTypes/squareGrid.js"></script>
+  <script src="gridTypes/rectangleGrid.js"></script>
 
-          <p style="font-size: 8px;"></p>
+  <script src="gridTypes/equilateralTriangleGrid.js"></script>
+  <script src="gridTypes/isoscelesTriangleGrid.js"></script>
+  <script src="gridTypes/rightTriangleGrid.js"></script>
 
-          <label for="square-stroke-width">Stroke Width:</label>
-          <input type="number" id="square-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+  <script src="gridTypes/regularHexagonGrid.js"></script>
+  <script src="gridTypes/elongatedHexagonGrid.js"></script>
+</head>
 
-          <label for="square-stroke-color">Stroke Color:</label>
-          <input type="color" id="square-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
-        </div>
-        <div id="rectangle-grid-settings" hidden>
-          <!-- Settings for rectangle grid -->
-          <label for="rectangle-image-width">Image Width (pixels):</label> 
-          <input type="number" id="rectangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="rectangle-image-height">Image Height (pixels):</label> 
-          <input type="number" id="rectangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="rectangle-tile-width">Tile Width (pixels):</label> 
-          <input type="number" id="rectangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="80"> <br>
-          
-          <label for="rectangle-tile-height">Tile Height (pixels):</label> 
-          <input type="number" id="rectangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="rectangle-color-1">Color 1:</label> 
-          <input type="color" id="rectangle-color-1" onchange="GenerateGrid();" value="#000000"> <br>
-          
-          <label for="rectangle-color-2">Color 2:</label> 
-          <input type="color" id="rectangle-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+<body>
+  <main>
+    <h1>Grid Generator</h1>
+    <p>Select a grid type from the dropdown menu and adjust the settings to generate your desired grid.</p>
+    <select id="grid-type-selector" onchange="ChangeGridType();">
+      <option value="" selected disabled hidden>Choose grid type</option>
+      <option value="0">Square Grid</option>
+      <option value="1">Rectangle Grid</option>
+      <hr>
+      <option value="2">Equilateral Triangle Grid</option>
+      <option value="3">Isosceles Triangle Grid</option>
+      <option value="4">Right Triangle Grid</option>
+      <hr>
+      <option value="5">Regular Hexagon Grid</option>
+      <option value="6">Elongated Hexagon Grid</option>
+    </select>
+    <br><br>
+    <div id="image-settings"> <!-- Include all grid types here -->
+      <div id="square-grid-settings" hidden>
+        <!-- Settings for square grid -->
+        <label for="square-image-width">Image Width (pixels):</label>
+        <input type="number" id="square-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
 
-          <p style="font-size: 8px;"></p>
+        <label for="square-image-height">Image Height (pixels):</label>
+        <input type="number" id="square-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
 
-          <label for="rectangle-stroke-width">Stroke Width:</label>
-          <input type="number" id="rectangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+        <p style="font-size: 8px;"></p>
 
-          <label for="rectangle-stroke-color">Stroke Color:</label>
-          <input type="color" id="rectangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
-        </div>
-        <div id="equilateral-triangle-grid-settings" hidden>
-          <!-- Settings for equilateral triangle grid -->
-          <label for="equilateral-triangle-image-width">Image Width (pixels):</label> 
-          <input type="number" id="equilateral-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="equilateral-triangle-image-height">Image Height (pixels):</label> 
-          <input type="number" id="equilateral-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="equilateral-triangle-tile-size">Tile Size (side length, pixels):</label> 
-          <input type="number" id="equilateral-triangle-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+        <label for="square-tile-size">Tile Size (pixels):</label>
+        <input type="number" id="square-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
 
-          <label for="equilateral-triangle-orientation">Tile Orientation:</label> 
-          <select id="equilateral-triangle-orientation" onchange="GenerateGrid();">
-          <option value="0">Tip Up/Down</option>
-          <option value="1">Tip Left/Right</option>
-          </select>
-      
-          <p style="font-size: 8px;"></p>
-          
-          <label for="equilateral-triangle-color-1">Color 1:</label> 
-          <input type="color" id="equilateral-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
-          
-          <label for="equilateral-triangle-color-2">Color 2:</label> 
-          <input type="color" id="equilateral-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+        <p style="font-size: 8px;"></p>
 
-          <p style="font-size: 8px;"></p>
-          
-          <label for="equilateral-triangle-stroke-width">Stroke Width:</label> 
-          <input type="number" id="equilateral-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
-          
-          <label for="equilateral-triangle-stroke-color">Stroke Color:</label> 
-          <input type="color" id="equilateral-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
-        </div>
-        <div id="isosceles-triangle-grid-settings" hidden>
-          <!-- Settings for isosceles triangle grid -->
-          <label for="isosceles-triangle-image-width">Image Width (pixels):</label> 
-          <input type="number" id="isosceles-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="isosceles-triangle-image-height">Image Height (pixels):</label> 
-          <input type="number" id="isosceles-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="isosceles-triangle-tile-width">Tile Width (pixels):</label> 
-          <input type="number" id="isosceles-triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="100"> <br>
-              
-          <label for="isosceles-triangle-tile-height">Tile Height (pixels):</label> 
-          <input type="number" id="isosceles-triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="40"> <br>
+        <label for="square-color-1">Color 1:</label>
+        <input type="color" id="square-color-1" onchange="GenerateGrid();" value="#000000"> <br>
 
-          <label for="isosceles-triangle-orientation">Tile Orientation:</label> 
-          <select id="isosceles-triangle-orientation" onchange="GenerateGrid();">
-          <option value="0">Tip Up/Down</option>
-          <option value="1">Tip Left/Right</option>
-          </select>
-      
-          <p style="font-size: 8px;"></p>
-          
-          <label for="isosceles-triangle-color-1">Color 1:</label> 
-          <input type="color" id="isosceles-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
-          
-          <label for="isosceles-triangle-color-2">Color 2:</label> 
-          <input type="color" id="isosceles-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+        <label for="square-color-2">Color 2:</label>
+        <input type="color" id="square-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
 
-          <p style="font-size: 8px;"></p>
-          
-          <label for="isosceles-triangle-stroke-width">Stroke Width:</label> 
-          <input type="number" id="isosceles-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
-          
-          <label for="isosceles-triangle-stroke-color">Stroke Color:</label> 
-          <input type="color" id="isosceles-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
-        </div>
-        <div id="right-triangle-grid-settings" hidden>
-          <!-- Settings for right triangle grid -->
-          <label for="right-triangle-image-width">Image Width (pixels):</label> 
-          <input type="number" id="right-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="right-triangle-image-height">Image Height (pixels):</label> 
-          <input type="number" id="right-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="right-triangle-tile-width">Tile Width (pixels):</label> 
-          <input type="number" id="right-triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
-              
-          <label for="right-triangle-tile-height">Tile Height (pixels):</label> 
-          <input type="number" id="right-triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+        <p style="font-size: 8px;"></p>
 
-          <label for="right-triangle-orientation">Tile Orientation:</label> 
-          <select id="right-triangle-orientation" onchange="GenerateGrid();">
-          <option value="0">◺ & ◹</option>
-          <option value="1">◸ & ◿</option>
-          </select>
-      
-          <p style="font-size: 8px;"></p>
-          
-          <label for="right-triangle-color-1">Color 1:</label> 
-          <input type="color" id="right-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
-          
-          <label for="right-triangle-color-2">Color 2:</label> 
-          <input type="color" id="right-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+        <label for="square-stroke-width">Stroke Width:</label>
+        <input type="number" id="square-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
 
-          <p style="font-size: 8px;"></p>
-          
-          <label for="right-triangle-stroke-width">Stroke Width:</label> 
-          <input type="number" id="right-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
-          
-          <label for="right-triangle-stroke-color">Stroke Color:</label> 
-          <input type="color" id="right-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
-        </div>
-        <div id="regular-hexagon-grid-settings" hidden>
-          <!-- Settings for regular hexagon grid -->
-          <label for="regular-hexagon-image-width">Image Width (pixels):</label> 
-          <input type="number" id="regular-hexagon-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="regular-hexagon-image-height">Image Height (pixels):</label> 
-          <input type="number" id="regular-hexagon-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="regular-hexagon-tile-size">Tile Size (side length, pixels):</label> 
-          <input type="number" id="regular-hexagon-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
-          
-          <label for="regular-hexagon-tile-x-offset">Tile X Offset:</label> 
-          <input type="number" id="regular-hexagon-tile-x-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
-
-          <label for="regular-hexagon-tile-y-offset">Tile Y Offset:</label> 
-          <input type="number" id="regular-hexagon-tile-y-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
-          
-          <label for="regular-hexagon-orientation">Tile Orientation:</label> 
-          <select id="regular-hexagon-orientation" onchange="GenerateGrid();">
-          <option value="0">Flat Top</option>
-          <option value="1">Pointed Top</option>
-          </select>
-      
-          <p style="font-size: 8px;"></p>
-          
-          <label for="regular-hexagon-color-1">Color 1:</label> 
-          <input type="color" id="regular-hexagon-color-1" onchange="GenerateGrid();" value="#ff0000"> <br>
-          
-          <label for="regular-hexagon-color-2">Color 2:</label> 
-          <input type="color" id="regular-hexagon-color-2" onchange="GenerateGrid();" value="#ffff00"> <br>
-
-          <label for="regular-hexagon-color-3">Color 3:</label> 
-          <input type="color" id="regular-hexagon-color-3" onchange="GenerateGrid();" value="#0000ff"> <br>
-
-          <p style="font-size: 8px;"></p>
-          
-          <label for="regular-hexagon-stroke-width">Stroke Width:</label> 
-          <input type="number" id="regular-hexagon-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="2" step="1"> <br>
-          
-          <label for="regular-hexagon-stroke-color">Stroke Color:</label> 
-          <input type="color" id="regular-hexagon-stroke-color" onchange="GenerateGrid();" value="#000000"> <br>
-        </div>
-        <div id="elongated-hexagon-grid-settings" hidden>
-          <!-- Settings for elongated hexagon grid -->
-          <label for="elongated-hexagon-image-width">Image Width (pixels):</label> 
-          <input type="number" id="elongated-hexagon-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <label for="elongated-hexagon-image-height">Image Height (pixels):</label> 
-          <input type="number" id="elongated-hexagon-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
-          
-          <p style="font-size: 8px;"></p>
-          
-          <label for="elongated-hexagon-tile-width">Tile Width (pixels):</label> 
-          <input type="number" id="elongated-hexagon-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="40"> <br>
-          
-          <label for="elongated-hexagon-tile-height">Tile Height (pixels):</label> 
-          <input type="number" id="elongated-hexagon-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="80"> <br>
-
-          <label for="elongated-hexagon-tile-x-offset">Tile X Offset:</label> 
-          <input type="number" id="elongated-hexagon-tile-x-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
-
-          <label for="elongated-hexagon-tile-y-offset">Tile Y Offset:</label> 
-          <input type="number" id="elongated-hexagon-tile-y-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
-          
-          <label for="elongated-hexagon-orientation">Tile Orientation:</label> 
-          <select id="elongated-hexagon-orientation" onchange="GenerateGrid();">
-          <option value="0">Flat Top</option>
-          <option value="1">Pointed Top</option>
-          </select>
-      
-          <p style="font-size: 8px;"></p>
-          
-          <label for="elongated-hexagon-color-1">Color 1:</label> 
-          <input type="color" id="elongated-hexagon-color-1" onchange="GenerateGrid();" value="#ff0000"> <br>
-          
-          <label for="elongated-hexagon-color-2">Color 2:</label> 
-          <input type="color" id="elongated-hexagon-color-2" onchange="GenerateGrid();" value="#ffff00"> <br>
-
-          <label for="elongated-hexagon-color-3">Color 3:</label> 
-          <input type="color" id="elongated-hexagon-color-3" onchange="GenerateGrid();" value="#0000ff"> <br>
-
-          <p style="font-size: 8px;"></p>
-          
-          <label for="elongated-hexagon-stroke-width">Stroke Width:</label> 
-          <input type="number" id="elongated-hexagon-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="2" step="1"> <br>
-          
-          <label for="elongated-hexagon-stroke-color">Stroke Color:</label> 
-          <input type="color" id="elongated-hexagon-stroke-color" onchange="GenerateGrid();" value="#000000"> <br>
-        </div>
+        <label for="square-stroke-color">Stroke Color:</label>
+        <input type="color" id="square-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
       </div>
-      <br>
-      <div id="image-container"></div>
-      <br><br>
-      <button id="download-button" onclick="downloadImage()" hidden>Download Image</button>
-    </main>
-    <footer>
-      This project is open source. You can view the source code, comment, or contribute at <a href="https://github.com/Adamimoka/grid-generator" target="_blank">https://github.com/Adamimoka/grid-generator</a>.
-    </footer>
-  </body>
+      <div id="rectangle-grid-settings" hidden>
+        <!-- Settings for rectangle grid -->
+        <label for="rectangle-image-width">Image Width (pixels):</label>
+        <input type="number" id="rectangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="rectangle-image-height">Image Height (pixels):</label>
+        <input type="number" id="rectangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="rectangle-tile-width">Tile Width (pixels):</label>
+        <input type="number" id="rectangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="80"> <br>
+
+        <label for="rectangle-tile-height">Tile Height (pixels):</label>
+        <input type="number" id="rectangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="25"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="rectangle-color-1">Color 1:</label>
+        <input type="color" id="rectangle-color-1" onchange="GenerateGrid();" value="#000000"> <br>
+
+        <label for="rectangle-color-2">Color 2:</label>
+        <input type="color" id="rectangle-color-2" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="rectangle-stroke-width">Stroke Width:</label>
+        <input type="number" id="rectangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="rectangle-stroke-color">Stroke Color:</label>
+        <input type="color" id="rectangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
+      </div>
+      <div id="equilateral-triangle-grid-settings" hidden>
+        <!-- Settings for equilateral triangle grid -->
+        <label for="equilateral-triangle-image-width">Image Width (pixels):</label>
+        <input type="number" id="equilateral-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="equilateral-triangle-image-height">Image Height (pixels):</label>
+        <input type="number" id="equilateral-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="equilateral-triangle-tile-size">Tile Size (side length, pixels):</label>
+        <input type="number" id="equilateral-triangle-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+
+        <label for="equilateral-triangle-orientation">Tile Orientation:</label>
+        <select id="equilateral-triangle-orientation" onchange="GenerateGrid();">
+          <option value="0">Tip Up/Down</option>
+          <option value="1">Tip Left/Right</option>
+        </select>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="equilateral-triangle-color-1">Color 1:</label>
+        <input type="color" id="equilateral-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <label for="equilateral-triangle-color-2">Color 2:</label>
+        <input type="color" id="equilateral-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="equilateral-triangle-stroke-width">Stroke Width:</label>
+        <input type="number" id="equilateral-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="equilateral-triangle-stroke-color">Stroke Color:</label>
+        <input type="color" id="equilateral-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
+      </div>
+      <div id="isosceles-triangle-grid-settings" hidden>
+        <!-- Settings for isosceles triangle grid -->
+        <label for="isosceles-triangle-image-width">Image Width (pixels):</label>
+        <input type="number" id="isosceles-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="isosceles-triangle-image-height">Image Height (pixels):</label>
+        <input type="number" id="isosceles-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="isosceles-triangle-tile-width">Tile Width (pixels):</label>
+        <input type="number" id="isosceles-triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="100"> <br>
+
+        <label for="isosceles-triangle-tile-height">Tile Height (pixels):</label>
+        <input type="number" id="isosceles-triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="40"> <br>
+
+        <label for="isosceles-triangle-orientation">Tile Orientation:</label>
+        <select id="isosceles-triangle-orientation" onchange="GenerateGrid();">
+          <option value="0">Tip Up/Down</option>
+          <option value="1">Tip Left/Right</option>
+        </select>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="isosceles-triangle-color-1">Color 1:</label>
+        <input type="color" id="isosceles-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <label for="isosceles-triangle-color-2">Color 2:</label>
+        <input type="color" id="isosceles-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="isosceles-triangle-stroke-width">Stroke Width:</label>
+        <input type="number" id="isosceles-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="isosceles-triangle-stroke-color">Stroke Color:</label>
+        <input type="color" id="isosceles-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
+      </div>
+      <div id="right-triangle-grid-settings" hidden>
+        <!-- Settings for right triangle grid -->
+        <label for="right-triangle-image-width">Image Width (pixels):</label>
+        <input type="number" id="right-triangle-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="right-triangle-image-height">Image Height (pixels):</label>
+        <input type="number" id="right-triangle-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="right-triangle-tile-width">Tile Width (pixels):</label>
+        <input type="number" id="right-triangle-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+
+        <label for="right-triangle-tile-height">Tile Height (pixels):</label>
+        <input type="number" id="right-triangle-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+
+        <label for="right-triangle-orientation">Tile Orientation:</label>
+        <select id="right-triangle-orientation" onchange="GenerateGrid();">
+          <option value="0">◺◹</option>
+          <option value="1">◸◿</option>
+        </select>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="right-triangle-color-1">Color 1:</label>
+        <input type="color" id="right-triangle-color-1" onchange="GenerateGrid();" value="#ffffff"> <br>
+
+        <label for="right-triangle-color-2">Color 2:</label>
+        <input type="color" id="right-triangle-color-2" onchange="GenerateGrid();" value="#000000"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="right-triangle-stroke-width">Stroke Width:</label>
+        <input type="number" id="right-triangle-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="0" step="1"> <br>
+
+        <label for="right-triangle-stroke-color">Stroke Color:</label>
+        <input type="color" id="right-triangle-stroke-color" onchange="GenerateGrid();" value="#0000ff"> <br>
+      </div>
+      <div id="regular-hexagon-grid-settings" hidden>
+        <!-- Settings for regular hexagon grid -->
+        <label for="regular-hexagon-image-width">Image Width (pixels):</label>
+        <input type="number" id="regular-hexagon-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="regular-hexagon-image-height">Image Height (pixels):</label>
+        <input type="number" id="regular-hexagon-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="regular-hexagon-tile-size">Tile Size (side length, pixels):</label>
+        <input type="number" id="regular-hexagon-tile-size" onchange="GenerateGrid();" min="1" max="10000" value="50"> <br>
+
+        <label for="regular-hexagon-tile-x-offset">Tile X Offset:</label>
+        <input type="number" id="regular-hexagon-tile-x-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
+
+        <label for="regular-hexagon-tile-y-offset">Tile Y Offset:</label>
+        <input type="number" id="regular-hexagon-tile-y-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
+
+        <label for="regular-hexagon-orientation">Tile Orientation:</label>
+        <select id="regular-hexagon-orientation" onchange="GenerateGrid();">
+          <option value="0">Flat Top</option>
+          <option value="1">Pointed Top</option>
+        </select>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="regular-hexagon-color-1">Color 1:</label>
+        <input type="color" id="regular-hexagon-color-1" onchange="GenerateGrid();" value="#ff0000"> <br>
+
+        <label for="regular-hexagon-color-2">Color 2:</label>
+        <input type="color" id="regular-hexagon-color-2" onchange="GenerateGrid();" value="#ffff00"> <br>
+
+        <label for="regular-hexagon-color-3">Color 3:</label>
+        <input type="color" id="regular-hexagon-color-3" onchange="GenerateGrid();" value="#0000ff"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="regular-hexagon-stroke-width">Stroke Width:</label>
+        <input type="number" id="regular-hexagon-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="2" step="1"> <br>
+
+        <label for="regular-hexagon-stroke-color">Stroke Color:</label>
+        <input type="color" id="regular-hexagon-stroke-color" onchange="GenerateGrid();" value="#000000"> <br>
+      </div>
+      <div id="elongated-hexagon-grid-settings" hidden>
+        <!-- Settings for elongated hexagon grid -->
+        <label for="elongated-hexagon-image-width">Image Width (pixels):</label>
+        <input type="number" id="elongated-hexagon-image-width" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <label for="elongated-hexagon-image-height">Image Height (pixels):</label>
+        <input type="number" id="elongated-hexagon-image-height" onchange="GenerateGrid();" min="1" max="10000" value="400"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="elongated-hexagon-tile-width">Tile Width (pixels):</label>
+        <input type="number" id="elongated-hexagon-tile-width" onchange="GenerateGrid();" min="1" max="10000" value="40"> <br>
+
+        <label for="elongated-hexagon-tile-height">Tile Height (pixels):</label>
+        <input type="number" id="elongated-hexagon-tile-height" onchange="GenerateGrid();" min="1" max="10000" value="80"> <br>
+
+        <label for="elongated-hexagon-tile-x-offset">Tile X Offset:</label>
+        <input type="number" id="elongated-hexagon-tile-x-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
+
+        <label for="elongated-hexagon-tile-y-offset">Tile Y Offset:</label>
+        <input type="number" id="elongated-hexagon-tile-y-offset" onchange="GenerateGrid();" min="-1" max="1" value="0" step="0.05"> <br>
+
+        <label for="elongated-hexagon-orientation">Tile Orientation:</label>
+        <select id="elongated-hexagon-orientation" onchange="GenerateGrid();">
+          <option value="0">Flat Top</option>
+          <option value="1">Pointed Top</option>
+        </select>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="elongated-hexagon-color-1">Color 1:</label>
+        <input type="color" id="elongated-hexagon-color-1" onchange="GenerateGrid();" value="#ff0000"> <br>
+
+        <label for="elongated-hexagon-color-2">Color 2:</label>
+        <input type="color" id="elongated-hexagon-color-2" onchange="GenerateGrid();" value="#ffff00"> <br>
+
+        <label for="elongated-hexagon-color-3">Color 3:</label>
+        <input type="color" id="elongated-hexagon-color-3" onchange="GenerateGrid();" value="#0000ff"> <br>
+
+        <p style="font-size: 8px;"></p>
+
+        <label for="elongated-hexagon-stroke-width">Stroke Width:</label>
+        <input type="number" id="elongated-hexagon-stroke-width" onchange="GenerateGrid();" min="0" max="10000" value="2" step="1"> <br>
+
+        <label for="elongated-hexagon-stroke-color">Stroke Color:</label>
+        <input type="color" id="elongated-hexagon-stroke-color" onchange="GenerateGrid();" value="#000000"> <br>
+      </div>
+    </div>
+    <br>
+    <div id="image-container"></div>
+    <br><br>
+    <div id="download-section" hidden>
+      <label for="download-filename">Filename:</label>
+      <input type="text" id="download-filename" placeholder="filename" value="grid"> <br>
+      <p style="font-size: 8px;"></p>
+      <button onclick="downloadImage()">Download Image</button>
+    </div>
+  </main>
+  <footer>
+    This project is open source. You can view the source code, comment, or contribute at <a href="https://github.com/Adamimoka/grid-generator" target="_blank">https://github.com/Adamimoka/grid-generator</a>.
+  </footer>
+</body>
+
 </html>

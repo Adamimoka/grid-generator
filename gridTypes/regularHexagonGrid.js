@@ -30,7 +30,7 @@ function RegularHexagonGrid() {
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
-    
+
     return image;
 }
 
@@ -45,7 +45,7 @@ function drawRegularHexagonGrid(context, image_width, image_height, tile_size, t
         hex_width = Math.sqrt(3) * tile_size;
         hex_height = 3 / 2 * tile_size;
     }
-    
+
     if (tile_orientation == 0) {
         for (let i = -1; i < image_width / hex_width * 1.05 + 2; i++) {
             for (let j = -1; j < image_height / hex_height * 1.05 + 2; j++) {

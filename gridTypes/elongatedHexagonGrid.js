@@ -18,12 +18,12 @@ function ElongatedHexagonGrid() {
     }
 
     if (tile_orientation == 0) {
-        tile_width *= 1/2;
-        tile_height *= 1/Math.sqrt(3);
+        tile_width *= 1 / 2;
+        tile_height *= 1 / Math.sqrt(3);
     }
     else {
-        tile_width *= 1/Math.sqrt(3);
-        tile_height *= 1/2;
+        tile_width *= 1 / Math.sqrt(3);
+        tile_height *= 1 / 2;
     }
 
     const canvas = document.createElement("canvas");
@@ -40,13 +40,13 @@ function ElongatedHexagonGrid() {
 
     const image = document.createElement("img");
     image.src = canvas.toDataURL("image/png");
-    
+
     return image;
 }
 
 function drawElongatedHexagonGrid(context, image_width, image_height, tile_width, tile_height, tile_x_offset, tile_y_offset, tile_orientation, color_1, color_2, color_3, stroke_width) {
     let color_counter = 2;
-    
+
     if (tile_orientation == 0) {
         for (let i = -1; i < image_width / tile_width * .75 + 2; i++) {
             for (let j = -1; j < image_height / tile_height * .606 + 2; j++) {
