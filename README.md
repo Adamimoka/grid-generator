@@ -1,11 +1,9 @@
 # Grid Generator
 Grid Generator is a tool designed to create customizable grid layouts for various applications. This README provides an overview of the project, including how to access, contribute, and use it.
 
-## Table of Contents
+## What is this?
 
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
+Grid Generator is a powerful and flexible tool that allows you to create customizable grids with ease. Whether you're designing a website, creating a game, or working on any other project that may require some sort of grid, the Grid Generator can save you time and effort.
 
 ## Usage
 
