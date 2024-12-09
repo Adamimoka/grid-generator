@@ -1,5 +1,4 @@
 # Grid Generator
-Grid Generator is a tool designed to create customizable grid layouts for various applications. This README provides an overview of the project, including how to access, contribute, and use it.
 
 ## What is this?
 
