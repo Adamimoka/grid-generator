@@ -22,3 +22,5 @@ Contributions are welcome! Follow these steps to contribute:
 2. Create a new branch.
 3. Make your changes.
 4. Create a pull request.
+
+Consider adding new grid patterns, improving existing generation algorithms, or something else entirely!
